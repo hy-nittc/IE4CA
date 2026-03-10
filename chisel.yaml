@@ -1,0 +1,50 @@
+# chisel.yaml
+
+# vmType: vz
+
+# vmOpts:
+#   vz:
+#     rosetta:
+#       enabled: true
+#       binfmt: true
+
+images:
+  - location: "https://cloud-images.ubuntu.com/releases/24.04/release/ubuntu-24.04-server-cloudimg-arm64.img"
+#    arch: "x86_64"
+    arch: "aarch64"
+
+cpus: 4
+memory: "6GiB"
+disk: "30GiB"
+
+mounts:
+  - location: "~"
+    writable: true
+
+# containerd:
+#   system: false
+#   user: false
+
+provision:
+  - mode: system
+    script: |
+      #!/bin/bash
+      set -eux
+
+      apt update
+
+      # 基本ツール
+      apt install -y curl git unzip build-essential
+
+      # OpenJDK 21
+      apt install -y openjdk-21-jdk
+
+      # # sbt
+      # echo "deb https://repo.scala-sbt.org/scalasbt/debian all main" > /etc/apt/sources.list.d/sbt.list
+      # curl -sL "https://keyserver.ubuntu.com/pks/lookup?op=get&search=0x99E82A75642AC823" | apt-key add -
+      # apt update
+      # apt install -y sbt
+
+      # # ユーザー環境整備
+      # echo 'export JAVA_HOME=/usr/lib/jvm/java-21-openjdk-amd64' >> /home/lima/.bashrc
+
