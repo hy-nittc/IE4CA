@@ -39,12 +39,12 @@ provision:
       # OpenJDK 21
       apt install -y openjdk-21-jdk
 
-      # # sbt
-      # echo "deb https://repo.scala-sbt.org/scalasbt/debian all main" > /etc/apt/sources.list.d/sbt.list
-      # curl -sL "https://keyserver.ubuntu.com/pks/lookup?op=get&search=0x99E82A75642AC823" | apt-key add -
-      # apt update
-      # apt install -y sbt
+      # sbt
+      echo "deb https://repo.scala-sbt.org/scalasbt/debian all main" > /etc/apt/sources.list.d/sbt.list
+      curl -sL "https://keyserver.ubuntu.com/pks/lookup?op=get&search=0x99E82A75642AC823" | apt-key add -
+      apt update
+      apt install -y sbt
 
       # # ユーザー環境整備
-      # echo 'export JAVA_HOME=/usr/lib/jvm/java-21-openjdk-amd64' >> /home/lima/.bashrc
+      echo 'export JAVA_HOME=/usr/lib/jvm/java-21-openjdk-amd64' >> /home/lima/.bashrc
 
