@@ -7,6 +7,11 @@ $ brew install sbt
 $ brew install verilator
 $ brew install surfer
 
+~~~ 
+printf("") 
+
+~~~~
+
 ## Lima
 $ cd workingdirectory    
 $ git clone https://github.com/hy-nittc/IE4CA.git
