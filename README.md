@@ -7,7 +7,7 @@ $ brew install sbt
 $ brew install verilator  
 $ brew install surfer
 
-```scala filename
+```Markdown: example.md
 printf("")
 
 ```
@@ -19,11 +19,11 @@ printf("")
 
 ## Lima
 $ cd workingdirectory    
-$ git clone https://github.com/hy-nittc/IE4CA.git
-$ brew install lima
-$ lima start chisel.yaml
-$ limactl list
-$ limactl shell chisel
+$ git clone https://github.com/hy-nittc/IE4CA.git  
+$ brew install lima  
+$ lima start chisel.yaml  
+$ limactl list  
+$ limactl shell chisel  
 
 ## Digital Circuit Design
 ### Verilog HDL Generation
