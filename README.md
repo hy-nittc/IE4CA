@@ -2,8 +2,8 @@
 The Computer Architecture class conducted in the Department of Computer Science and Electronic Engineering, National Institute of Technology , Tokuyama College. 
 
 ## Install
-$ brew install openjdk
-$ brew install sbt
+$ brew install openjdk  
+$ brew install sbt  
 $ brew install verilator
 $ brew install surfer
 
