@@ -8,14 +8,14 @@ $ brew install verilator
 $ brew install surfer
 
 
-```Markdown: example.md
+```Markdown:example.md
 # 見出し
 ## h2見出し
 ### h3見出し
 ```
 
 
-```Markdown: example.md
+```scala:example.scala
 printf("")
 
 ```
