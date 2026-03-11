@@ -139,19 +139,71 @@ libraryDependencies += "edu.berkeley.cs" %% "chisel3" % chiselVersion
 libraryDependencies += "edu.berkeley.cs" %% "chiseltest" % "0.6.2"
 ```
 
-### Main.scala
+### And.scala
 
 Hardware Description.
 
 ```scala
+import chisel3._
 
+class And extends Module {
+    val io = IO(new Bundle {
+        val aIn = Input(UInt(1.W))
+        val bIn = Input(UInt(1.W))
+        val andOut = Output(UInt(1.W))
+    })
+
+    io.andOut := io.aIn & io.bIn
+}
+
+object GenVerilog extends App {
+  val s = getVerilogString(new And())
+  println(s)
+}
+
+// generate .v verilog file
+// object GenVerilog extends App {
+//   emitVerilog(new And(), Array("--target-dir", "generated"))
+// }
 ```
 
-### MainTest.scala
+### AndTest.scala
 
 Test Bench Code.
 
 ```scala
+import chisel3._
+import chiseltest._
+import org.scalatest.flatspec.AnyFlatSpec
+
+class WaveTest extends AnyFlatSpec with ChiselScalatestTester {
+  "WaveForm" should "work" in {
+    test(new And).withAnnotations(Seq(WriteVcdAnnotation)) { dut =>
+//    test(new And) { dut =>
+            println("Start test")
+            
+            dut.io.aIn.poke(false.B)
+            dut.io.bIn.poke(false.B)
+            println(s"a=${dut.io.aIn.peek()},b=${dut.io.bIn.peek()}," +
+              s"and${dut.io.andOut.peek()},")
+
+            dut.io.aIn.poke(false.B)
+            dut.io.bIn.poke(true.B)
+            println(s"a=${dut.io.aIn.peek()},b=${dut.io.bIn.peek()}," +
+              s"and${dut.io.andOut.peek()},")
+
+            dut.io.aIn.poke(true.B)
+            dut.io.bIn.poke(false.B)
+            println(s"a=${dut.io.aIn.peek()},b=${dut.io.bIn.peek()}," +
+              s"and${dut.io.andOut.peek()},")
+
+            dut.io.aIn.poke(true.B)
+            dut.io.bIn.poke(true.B)
+            println(s"a=${dut.io.aIn.peek()},b=${dut.io.bIn.peek()}," +
+              s"and${dut.io.andOut.peek()},")
+    }
+  }
+}
 
 ```
 
@@ -173,4 +225,10 @@ sbt test
 ```bash
 surface &
 ```
+
+## Submission
+[GitHub Classroom](https://classroom.github.com)
+
+
+## References
 
