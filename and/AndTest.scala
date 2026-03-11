@@ -2,8 +2,8 @@ import chisel3._
 import chiseltest._
 import org.scalatest.flatspec.AnyFlatSpec
 
-class WaveTest extends AnyFlatSpec with ChiselScalatestTester {
-  "WaveForm" should "work" in {
+class SimpleTest extends AnyFlatSpec with ChiselScalatestTester {
+  "LogicOperation" should "work" in {
     test(new And).withAnnotations(Seq(WriteVcdAnnotation)) { dut =>
 //    test(new And) { dut =>
             println("Start test")
